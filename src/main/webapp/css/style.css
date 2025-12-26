@@ -1,0 +1,560 @@
+/* ===============================
+   GLOBAL RESET
+================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ===============================
+   BODY / BACKGROUND
+================================ */
+body {
+    background: radial-gradient(
+        circle at top,
+        #020617 0%,
+        #020617 40%,
+        #000000 100%
+    );
+    color: #e5e7eb;
+    min-height: 100vh;
+    padding-top: 65px;
+    padding-bottom: 50px;
+}
+
+/* ===============================
+   FIXED HEADER
+================================ */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 55px;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 32px;
+
+    background: rgba(20, 30, 50, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.header nav a {
+    margin-left: 22px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #9ca3af;
+    transition: color 0.25s ease;
+}
+
+.header nav a:hover {
+    color: #e5e7eb;
+}
+
+/* ===============================
+   MAIN CONTAINER
+================================ */
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 55px 20px;
+}
+
+/* ===============================
+   BRAND TITLE
+================================ */
+.brand-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    animation: fadeUp 1.2s ease forwards;
+}
+
+.brand-title::after {
+    content: "";
+    display: block;
+    width: 70px;
+    height: 3px;
+    margin-top: 8px;
+    background: linear-gradient(
+        90deg,
+        rgba(56,189,248,0.8),
+        rgba(56,189,248,0.2)
+    );
+    border-radius: 3px;
+}
+
+.brand-desc {
+    color: #9ca3af;
+    font-size: 1rem;
+    max-width: 520px;
+    margin-bottom: 45px;
+    line-height: 1.6;
+    animation: fadeUp 1.5s ease forwards;
+}
+
+/* ===============================
+   GRID
+================================ */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 28px;
+}
+
+/* ===============================
+   CARD (FIXED & BEAUTIFUL)
+================================ */
+.card {
+    position: relative;
+    z-index: 0;
+    overflow: hidden;
+
+    background: linear-gradient(
+        145deg,
+        rgba(30, 41, 59, 0.96),
+        rgba(15, 23, 42, 0.96)
+    );
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+
+    transition: all 0.35s ease;
+}
+
+.card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at top,
+        rgba(56,189,248,0.25),
+        transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none; /* ✅ buttons clickable */
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+        0 0 0 1px rgba(56, 189, 248, 0.45),
+        0 22px 55px rgba(0, 0, 0, 0.85),
+        0 0 35px rgba(56, 189, 248, 0.35);
+}
+
+.card * {
+    position: relative;
+    z-index: 1;
+}
+
+.card h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #cbd5f5;
+    margin-bottom: 25px;
+    font-size: 0.95rem;
+}
+
+/* ===============================
+   BUTTONS
+================================ */
+.btn {
+    display: inline-block;
+    padding: 12px 26px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+.btn-accent {
+    background: linear-gradient(135deg, #22d3ee, #38bdf8);
+    color: #020617;
+}
+
+.btn-accent:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 12px 35px rgba(56,189,248,0.65),
+        0 0 30px rgba(56,189,248,0.55);
+}
+
+/* ===============================
+   FIXED FOOTER
+================================ */
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 45px;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(20, 30, 50, 0.95);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    color: #9ca3af;
+    font-size: 0.85rem;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+@media (max-width: 600px) {
+    body {
+        padding-top: 90px;
+        padding-bottom: 70px;
+    }
+
+    .brand-title {
+        font-size: 2.3rem;
+    }
+
+    .header {
+        flex-direction: column;
+        height: auto;
+        padding: 12px;
+    }
+
+    .header nav a {
+        margin: 6px;
+    }
+}
+
+/* ===============================
+   ANIMATION
+================================ */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}/* ===============================
+   LOGIN PAGE (SPLIT LAYOUT)
+================================ */
+.login-wrapper {
+    min-height: calc(100vh - 120px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1100px;
+    margin: auto;
+    padding: 40px 20px;
+    gap: 40px;
+}
+
+/* LEFT SIDE */
+.login-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.login-info h1 {
+    font-size: 2.6rem;
+    margin-bottom: 15px;
+}
+
+.login-info p {
+    color: #9ca3af;
+    font-size: 1rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.login-info ul {
+    list-style: none;
+}
+
+.login-info li {
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+    color: #cbd5f5;
+}
+
+/* RIGHT SIDE CARD */
+.login-card {
+    background: linear-gradient(
+        145deg,
+        rgba(30, 41, 59, 0.96),
+        rgba(15, 23, 42, 0.96)
+    );
+    border-radius: 20px;
+    padding: 35px;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+.login-card h2 {
+    margin-bottom: 25px;
+    font-size: 1.6rem;
+}
+
+/* FORM */
+.login-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-card label {
+    font-size: 0.85rem;
+    margin-bottom: 6px;
+    color: #9ca3af;
+}
+
+.login-card input {
+    margin-bottom: 20px;
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(2, 6, 23, 0.9);
+    color: #e5e7eb;
+    font-size: 0.95rem;
+}
+
+.login-card input:focus {
+    outline: none;
+    border-color: rgba(56,189,248,0.6);
+    box-shadow: 0 0 0 1px rgba(56,189,248,0.4);
+}
+
+/* FOOTER TEXT */
+.login-footer {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: #9ca3af;
+}
+
+.login-footer span {
+    color: #38bdf8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 800px) {
+    .login-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .login-info {
+        text-align: center;
+    }
+}
+
+/* ===============================
+   NETWORKING PAGE
+================================ */
+.network-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+}
+
+/* PROFILE CARD */
+.profile-card {
+    background: linear-gradient(
+        145deg,
+        rgba(30, 41, 59, 0.96),
+        rgba(15, 23, 42, 0.96)
+    );
+    border-radius: 20px;
+    padding: 30px 20px;
+    text-align: center;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    transition: all 0.3s ease;
+}
+
+.profile-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.75),
+        0 0 25px rgba(56,189,248,0.35);
+}
+
+/* AVATAR */
+.avatar {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #22d3ee, #38bdf8);
+    color: #020617;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.5rem;
+}
+
+/* TEXT */
+.profile-card h3 {
+    margin-bottom: 6px;
+    font-size: 1.2rem;
+}
+
+.profile-card p {
+    font-size: 0.9rem;
+    color: #9ca3af;
+    margin-bottom: 20px;
+}
+/* ===============================
+   CALISTHENICS PAGE
+================================ */
+.exercise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+/* EXERCISE CARD */
+.exercise-card {
+    background: linear-gradient(
+        145deg,
+        rgba(30, 41, 59, 0.96),
+        rgba(15, 23, 42, 0.96)
+    );
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    transition: all 0.35s ease;
+}
+
+.exercise-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.75),
+        0 0 30px rgba(56,189,248,0.35);
+}
+
+.exercise-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+/* LEVEL TAG */
+.level {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+/* LEVEL COLORS */
+.level.beginner {
+    background: rgba(34,197,94,0.15);
+    color: #22c55e;
+}
+
+.level.intermediate {
+    background: rgba(250,204,21,0.15);
+    color: #facc15;
+}
+
+.level.advanced {
+    background: rgba(239,68,68,0.15);
+    color: #ef4444;
+}
+
+.exercise-card p {
+    color: #cbd5f5;
+    font-size: 0.95rem;
+    margin-bottom: 22px;
+}
+/* ===============================
+   ROUTINES PAGE
+================================ */
+.routine-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+
+/* ROUTINE CARD */
+.routine-card {
+    background: linear-gradient(
+        145deg,
+        rgba(30, 41, 59, 0.96),
+        rgba(15, 23, 42, 0.96)
+    );
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    transition: all 0.35s ease;
+}
+
+.routine-card:hover {
+    transform: translateY(-8px);
+    box-shadow:
+        0 20px 50px rgba(0,0,0,0.75),
+        0 0 30px rgba(56,189,248,0.35);
+}
+
+.routine-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+}
+
+.routine-card .schedule {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    margin-bottom: 12px;
+}
+
+.routine-card p {
+    color: #cbd5f5;
+    font-size: 0.95rem;
+    margin-bottom: 22px;
+}
+/* ===============================
+   ACTIVE NAV LINK
+================================ */
+.header nav a.active {
+    color: #e5e7eb;
+    position: relative;
+}
+
+/* subtle underline indicator */
+.header nav a.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        rgba(56,189,248,0.9),
+        rgba(56,189,248,0.4)
+    );
+    border-radius: 2px;
+}

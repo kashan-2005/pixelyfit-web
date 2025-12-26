@@ -1,0 +1,20 @@
+package com.pixelyfit.web.servlet;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+@WebServlet(name = "WeightsServlet", urlPatterns = {"/weights"})
+public class WeightsServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        request.getRequestDispatcher("/weights.jsp")
+               .forward(request, response);
+    }
+}
