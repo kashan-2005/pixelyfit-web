@@ -36,7 +36,7 @@
 
     <!-- RIGHT SIDE (FORM) -->
     <div class="login-card">
-        <h2>Sign in</h2>
+        <h2>Log in</h2>
 
         <form>
             <label>Email</label>
