@@ -9,7 +9,7 @@
 <body>
 
 <header class="header">
-    <div class="logo">pixelyFit</div>
+    <div class="logo">pixelyFit by Kashan</div>
     <nav>
     <a href="${pageContext.request.contextPath}/home">Home</a>
     <a class="active" href="${pageContext.request.contextPath}/login">Login</a>
